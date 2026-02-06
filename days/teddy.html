@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teddy Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/transitions.css" />
+  <link rel="stylesheet" href="../assets/css/cursor.css" />
+  <link rel="stylesheet" href="../assets/css/days.css" />
+
+  <script src="../assets/js/utils.js" defer></script>
+  <script src="../assets/js/cursor.js" defer></script>
+  <script src="../assets/js/music.js" defer></script>
+  <script src="../assets/js/transition.js" defer></script>
+  <script src="../assets/js/day.js" defer></script>
+</head>
+
+<body class="day-page theme-teddy" data-day-key="teddy" data-unlock-month="1" data-unlock-day="10">
+  <section class="lock-screen" id="lockScreen" hidden>
+    <div class="lock-box">
+      <h1>Not yet, love.</h1>
+      <p id="lockText">This one unlocks on Feb 10.</p>
+      <a class="action-btn secondary" href="../dashboard.html">Back to dashboard</a>
+    </div>
+  </section>
+
+  <main class="day-shell" id="dayContent">
+    <header class="day-hero">
+      <p class="kicker">Feb 10 • Teddy Day</p>
+      <h1>Something soft 🧸</h1>
+      <p class="sub">Tap the note — imagine it as a teddy hug.</p>
+    </header>
+
+    <section class="day-card">
+      <div class="love-note" id="loveNote">
+        <div class="note-cover" id="noteCover" role="button" tabindex="0" aria-expanded="false">
+          <div class="tap">Tap to open 💌</div>
+        </div>
+
+        <div class="note-body">
+          <h2>A safe little comfort</h2>
+          <p>
+            Some days you don’t need advice. You don’t need solutions.
+            You just need comfort — something soft, steady, and warm.
+          </p>
+          <p>
+            If you ever can’t find that comfort, I want you to remember:
+            you can come to me. Even with messy feelings. Even with silence.
+          </p>
+          <p class="signature">— Always here</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn secondary" id="backBtn" type="button">Back</button>
+        <button class="action-btn" id="completeBtn" type="button">Save this day</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

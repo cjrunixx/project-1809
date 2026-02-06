@@ -1,0 +1,181 @@
+/* =========================
+   DAY PAGES (SHARED)
+   ========================= */
+
+.day-page {
+  --day-bg-1: #ffe5ec;
+  --day-bg-2: #ffc8dd;
+  --day-accent: var(--accent);
+  background: linear-gradient(135deg, var(--day-bg-1), var(--day-bg-2));
+}
+
+.theme-rose { --day-bg-1: #fff0f3; --day-bg-2: #ffccd5; --day-accent: #ff4d6d; }
+.theme-propose { --day-bg-1: #f1f3ff; --day-bg-2: #ffc8dd; --day-accent: #6c63ff; }
+.theme-chocolate { --day-bg-1: #fff7e6; --day-bg-2: #ffd6a5; --day-accent: #8b5e34; }
+.theme-teddy { --day-bg-1: #f7f7ff; --day-bg-2: #cdb4db; --day-accent: #7b2cbf; }
+.theme-promise { --day-bg-1: #e7fff5; --day-bg-2: #b7e4c7; --day-accent: #2d6a4f; }
+.theme-hug { --day-bg-1: #ecfeff; --day-bg-2: #a5f3fc; --day-accent: #0ea5e9; }
+.theme-kiss { --day-bg-1: #ffe5f1; --day-bg-2: #ffafcc; --day-accent: #ff006e; }
+
+.day-shell {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+.day-hero {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.day-hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 4.8vw, 44px);
+  line-height: 1.1;
+  color: #5e548e;
+}
+
+.day-hero .sub {
+  margin: 0 auto;
+  max-width: 60ch;
+  font-size: 14px;
+  color: rgba(61, 44, 69, 0.75);
+}
+
+.day-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.love-note {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px dashed rgba(61, 44, 69, 0.25);
+  min-height: 230px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.note-cover {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
+  cursor: pointer;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.note-cover .tap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(61, 44, 69, 0.16);
+  color: rgba(61, 44, 69, 0.85);
+  font-size: 14px;
+}
+
+.note-cover:focus-visible {
+  outline: 3px solid rgba(255, 77, 109, 0.45);
+  outline-offset: -3px;
+}
+
+.love-note.is-open .note-cover {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.note-body {
+  padding: 18px 16px 16px;
+}
+
+.note-body h2 {
+  margin: 0 0 10px;
+  color: #5e548e;
+  font-size: 18px;
+}
+
+.note-body p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+  color: rgba(61, 44, 69, 0.9);
+}
+
+.note-body .signature {
+  margin-top: 14px;
+  font-style: italic;
+  color: rgba(61, 44, 69, 0.7);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background: var(--day-accent);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: rgba(61, 44, 69, 0.9);
+  border: 1px solid rgba(61, 44, 69, 0.25);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.lock-screen {
+  width: min(700px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.lock-box {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 20px 18px 18px;
+}
+
+.lock-box h1 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #5e548e;
+}
+
+.lock-box p {
+  margin: 0 0 14px;
+  color: rgba(61, 44, 69, 0.8);
+}
+
+@media (max-width: 520px) {
+  .day-card {
+    padding: 16px;
+  }
+
+  .note-body {
+    padding: 16px 14px 14px;
+  }
+}

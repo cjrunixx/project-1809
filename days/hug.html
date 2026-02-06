@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hug Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/transitions.css" />
+  <link rel="stylesheet" href="../assets/css/cursor.css" />
+  <link rel="stylesheet" href="../assets/css/days.css" />
+
+  <script src="../assets/js/utils.js" defer></script>
+  <script src="../assets/js/cursor.js" defer></script>
+  <script src="../assets/js/music.js" defer></script>
+  <script src="../assets/js/transition.js" defer></script>
+  <script src="../assets/js/day.js" defer></script>
+</head>
+
+<body class="day-page theme-hug" data-day-key="hug" data-unlock-month="1" data-unlock-day="12">
+  <section class="lock-screen" id="lockScreen" hidden>
+    <div class="lock-box">
+      <h1>Not yet, love.</h1>
+      <p id="lockText">This one unlocks on Feb 12.</p>
+      <a class="action-btn secondary" href="../dashboard.html">Back to dashboard</a>
+    </div>
+  </section>
+
+  <main class="day-shell" id="dayContent">
+    <header class="day-hero">
+      <p class="kicker">Feb 12 • Hug Day</p>
+      <h1>A hug in code 🫂</h1>
+      <p class="sub">Tap the note — imagine my arms around you.</p>
+    </header>
+
+    <section class="day-card">
+      <div class="love-note" id="loveNote">
+        <div class="note-cover" id="noteCover" role="button" tabindex="0" aria-expanded="false">
+          <div class="tap">Tap to open 💌</div>
+        </div>
+
+        <div class="note-body">
+          <h2>Close your eyes for a second</h2>
+          <p>
+            This is a hug that lasts longer than the awkward “okay that’s enough” kind.
+            A hug that says: “I’m here. You’re safe. You don’t have to carry everything alone.”
+          </p>
+          <p>
+            If you’re reading this on a hard day, I’m proud of you for making it through.
+            If you’re reading this on a good day, I’m celebrating you quietly from here.
+          </p>
+          <p class="signature">— Wrap-around love</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn secondary" id="backBtn" type="button">Back</button>
+        <button class="action-btn" id="completeBtn" type="button">Save this day</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

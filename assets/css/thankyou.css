@@ -1,0 +1,117 @@
+/* =========================
+   THANK YOU (FINAL PAGE)
+   ========================= */
+
+.thankyou-page {
+  background: radial-gradient(circle at 30% 20%, #fff 0%, #ffe5ec 32%, #ffc8dd 70%, #ffafcc 100%);
+}
+
+.thankyou-shell {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 70px;
+}
+
+.thankyou-hero {
+  text-align: center;
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.thankyou-hero.is-visible,
+.thankyou-card.is-visible,
+.recap.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thankyou-hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 5.2vw, 54px);
+  line-height: 1;
+  color: #5e548e;
+}
+
+.thankyou-card,
+.recap {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.thankyou-card h2,
+.recap h2 {
+  margin: 0 0 10px;
+  color: #5e548e;
+  font-size: 18px;
+}
+
+.thankyou-card p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+  color: rgba(61, 44, 69, 0.9);
+}
+
+.thankyou-card .signature {
+  margin-top: 14px;
+  font-style: italic;
+  color: rgba(61, 44, 69, 0.72);
+}
+
+.recap {
+  margin-top: 16px;
+}
+
+.recap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.recap-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 77, 109, 0.10);
+  border: 1px solid rgba(255, 77, 109, 0.16);
+  font-size: 13px;
+  color: rgba(61, 44, 69, 0.85);
+}
+
+.recap-pill.complete {
+  background: rgba(46, 196, 182, 0.12);
+  border-color: rgba(46, 196, 182, 0.18);
+}
+
+.recap-pill .left {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recap-pill .emoji {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 520px) {
+  .recap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

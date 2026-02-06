@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Promise Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/transitions.css" />
+  <link rel="stylesheet" href="../assets/css/cursor.css" />
+  <link rel="stylesheet" href="../assets/css/days.css" />
+
+  <script src="../assets/js/utils.js" defer></script>
+  <script src="../assets/js/cursor.js" defer></script>
+  <script src="../assets/js/music.js" defer></script>
+  <script src="../assets/js/transition.js" defer></script>
+  <script src="../assets/js/day.js" defer></script>
+</head>
+
+<body class="day-page theme-promise" data-day-key="promise" data-unlock-month="1" data-unlock-day="11">
+  <section class="lock-screen" id="lockScreen" hidden>
+    <div class="lock-box">
+      <h1>Not yet, love.</h1>
+      <p id="lockText">This one unlocks on Feb 11.</p>
+      <a class="action-btn secondary" href="../dashboard.html">Back to dashboard</a>
+    </div>
+  </section>
+
+  <main class="day-shell" id="dayContent">
+    <header class="day-hero">
+      <p class="kicker">Feb 11 • Promise Day</p>
+      <h1>A promise I mean 🤝</h1>
+      <p class="sub">Tap the note — this one is a vow.</p>
+    </header>
+
+    <section class="day-card">
+      <div class="love-note" id="loveNote">
+        <div class="note-cover" id="noteCover" role="button" tabindex="0" aria-expanded="false">
+          <div class="tap">Tap to open 💌</div>
+        </div>
+
+        <div class="note-body">
+          <h2>Here’s what I promise</h2>
+          <p>
+            I promise to speak to you with kindness — especially when life isn’t kind.
+            I promise to choose patience over ego. I promise to listen, even when I think I know what you’re going to say. I promise to show up, in the big ways and the small ways. I promise to keep learning how to love you better, every day. And most of all, I promise that my love for you will be a verb — something I show through my actions, not just my words.
+          </p>
+          <p class="signature">— Kappa 💖</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn secondary" id="backBtn" type="button">Back</button>
+        <button class="action-btn" id="completeBtn" type="button">Save this day</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Propose Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/transitions.css" />
+  <link rel="stylesheet" href="../assets/css/cursor.css" />
+  <link rel="stylesheet" href="../assets/css/days.css" />
+
+  <script src="../assets/js/utils.js" defer></script>
+  <script src="../assets/js/cursor.js" defer></script>
+  <script src="../assets/js/music.js" defer></script>
+  <script src="../assets/js/transition.js" defer></script>
+  <script src="../assets/js/day.js" defer></script>
+</head>
+
+<body class="day-page theme-propose" data-day-key="propose" data-unlock-month="1" data-unlock-day="8">
+  <section class="lock-screen" id="lockScreen" hidden>
+    <div class="lock-box">
+      <h1>Not yet, love.</h1>
+      <p id="lockText">This one unlocks on Feb 8.</p>
+      <a class="action-btn secondary" href="../dashboard.html">Back to dashboard</a>
+    </div>
+  </section>
+
+  <main class="day-shell" id="dayContent">
+    <header class="day-hero">
+      <p class="kicker">Feb 8 • Propose Day</p>
+      <h1>A little proposal 💍</h1>
+      <p class="sub">Tap the note — it’s small, but it’s real.</p>
+    </header>
+
+    <section class="day-card">
+      <div class="love-note" id="loveNote">
+        <div class="note-cover" id="noteCover" role="button" tabindex="0" aria-expanded="false">
+          <div class="tap">Tap to open 💌</div>
+        </div>
+
+        <div class="note-body">
+          <h2>Here’s what I’m asking</h2>
+          <p>
+            I’m not proposing rings or grand speeches — I’m proposing <em>us</em>. Just you and me, choosing each other every day. I’m asking for the chance to keep making you smile, to keep learning about you, and to keep building something that’s ours. No pressure, no big gestures — just a simple question: Will you let me be the one who loves you in all the little ways?
+          </p>
+          <p class="signature">— I choose you</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-btn secondary" id="backBtn" type="button">Back</button>
+        <button class="action-btn" id="completeBtn" type="button">Save this day</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

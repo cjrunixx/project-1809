@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Little Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/transitions.css" />
+  <link rel="stylesheet" href="assets/css/cursor.css" />
+  <link rel="stylesheet" href="assets/css/timeline.css" />
+
+  <script src="assets/js/utils.js" defer></script>
+  <script src="assets/js/cursor.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <script src="assets/js/transition.js" defer></script>
+  <script src="assets/js/timeline.js" defer></script>
+</head>
+
+<body class="timeline-page">
+  <main class="timeline-shell">
+    <header class="timeline-hero" data-reveal>
+      <p class="kicker">A tiny timeline of us</p>
+      <h1>From “hi” to “you feel like home.”</h1>
+      <p class="sub">
+        Scroll slowly. Tap to reveal.
+      </p>
+    </header>
+
+    <section class="timeline" aria-label="Love timeline">
+      <article class="moment" data-reveal>
+        <div class="moment-dot" aria-hidden="true"></div>
+        <div class="moment-card">
+          <div class="moment-meta">
+            <span class="moment-tag">Anfang</span>
+            <span class="moment-date">06/06/22</span>
+          </div>
+          <h2>That one small moment</h2>
+          <p>
+            Didn't know ki i will be using this photo after 4 years, but here we are. I get to say that school romances do exist, and i am lucky to have experienced it with you. Didn't know that 4 11' tomboy will become the reason behind my smiles. 
+          </p>
+          <div class="moment-media" data-photo-src="assets/images/photos/01.jpg" role="button" tabindex="0" aria-label="Reveal photo">
+            <div class="moment-media-placeholder">
+            <code>assets/images/photos/01.jpg</code>
+            </div>
+            <img class="moment-media-img is-blurred" alt="Memory photo" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+      <article class="moment" data-reveal>
+        <div class="moment-dot" aria-hidden="true"></div>
+        <div class="moment-card">
+          <div class="moment-meta">
+            <span class="moment-tag">die peinliche Phase</span>
+            <span class="moment-date"></span>
+          </div>
+          <h2>aaghe aaghe aap piche piceh me</h2>
+          <p>
+            haha.. seriously never thought of visiting kota, but as they say love make you do weird things. The time that i spent there with you will always be special to me, han we were not as close as we are now or lovey dovey like others par aaj ham jitte close he that is because we took things slow and gave each other time to understand each other. I will always remember kota as the place where i started to understand you and your weirdness, and that is when i started to fall for you.
+          </p>
+          <div class="moment-media" data-photo-src="assets/images/photos/02.jpg" role="button" tabindex="0" aria-label="Reveal photo">
+            <div class="moment-media-placeholder">
+            <code>assets/images/photos/02.jpg</code>
+            </div>
+            <img class="moment-media-img is-blurred" alt="Memory photo" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+      <article class="moment" data-reveal>
+        <div class="moment-dot" aria-hidden="true"></div>
+        <div class="moment-card">
+          <div class="moment-meta">
+            <span class="moment-tag">US</span>
+            <span class="moment-date"></span>
+          </div>
+          <h2>i take my words back</h2>
+          <p>
+            I take my words back, such me please mature mat ban, i mean kabhi nahi is also good for me. i want you to always lean on my shoulders, aur mujhe pasand he ye, mujhe pasand he aapka choti choti chizo me mujhe bulana, har choti chiz ke liye mujhe yad krna, baba mu hun hmesha aapke liye harpal hardin, and that is why i take my words back.
+          </p>
+          <div class="moment-media" data-video-src="assets/videos/03.mp4" role="button" tabindex="0" aria-label="Reveal video">
+            <div class="moment-media-placeholder">
+            <code>assets/videos/03.mp4</code>
+            </div>
+            <video class="moment-media-video is-blurred" preload="metadata" playsinline controls aria-label="Memory video"></video>
+          </div>
+        </div>
+      </article>
+      
+
+      <article class="moment" data-reveal>
+        <div class="moment-dot" aria-hidden="true"></div>
+        <div class="moment-card">
+          <div class="moment-meta">
+            <span class="moment-tag">Now</span>
+            <span class="moment-date"></span>
+          </div>
+          <h2>Forever</h2>
+          <p>
+            These 4 years have been a rollercoaster ride, with ups and downs, but every moment has lead to us today. I may be sounding cheesy par baba you deserve all the cheesiness in the world, you stayed with me through my worst time, i know i can be difficult as times but still you never left my side, you made me the man i am today, we still have a long way to go parr i will be always there for you no matter what.
+          </p>
+          <div class="moment-media" data-photo-src="assets/images/photos/05.jpg" role="button" tabindex="0" aria-label="Reveal photo">
+            <div class="moment-media-placeholder">
+            <code>assets/images/photos/05.jpg</code>
+            </div>
+            <img class="moment-media-img is-blurred" alt="Memory photo" loading="lazy" />
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="timeline-letter" data-reveal>
+      <h2>A small promise</h2>
+      <p>
+        I have a very bad trackrecord of being a good boyfriend, par i want to change that and this promise is the first step towards that. I promise to always be there for you, to support you in your dreams, to make you laugh when you are sad, to hold your hand through the tough times, and to love you unconditionally for the rest of my life.
+      </p>
+
+      <button class="primary-btn" id="toDashboardBtn" type="button">
+        Continue to Valentine Week
+      </button>
+      <p class="tiny-note">Next: 7 little surprises (date-locked).</p>
+    </section>
+
+    <footer class="timeline-footer">
+      Made with love, yours truly kappa 💖 
+    </footer>
+  </main>
+</body>
+</html>

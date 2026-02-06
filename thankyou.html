@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/transitions.css" />
+  <link rel="stylesheet" href="assets/css/cursor.css" />
+  <link rel="stylesheet" href="assets/css/days.css" />
+  <link rel="stylesheet" href="assets/css/thankyou.css" />
+
+  <script src="assets/js/utils.js" defer></script>
+  <script src="assets/js/cursor.js" defer></script>
+  <script src="assets/js/music.js" defer></script>
+  <script src="assets/js/transition.js" defer></script>
+  <script src="assets/js/thankyou.js" defer></script>
+</head>
+
+<body class="thankyou-page" data-unlock-month="1" data-unlock-day="14">
+  <section class="lock-screen" id="lockScreen" hidden>
+    <div class="lock-box">
+      <h1>Almost there.</h1>
+      <p id="lockText">This unlocks on Feb 14.</p>
+      <a class="action-btn secondary" href="dashboard.html">Back to dashboard</a>
+    </div>
+  </section>
+
+  <main class="thankyou-shell" id="thankyouContent">
+    <header class="thankyou-hero" data-reveal>
+      <p class="kicker">Feb 14 • Valentine’s Day</p>
+      <h1>Thank you.</h1>
+      <p class="sub">For letting me love you in little ways, all week.</p>
+    </header>
+
+    <section class="thankyou-card" data-reveal>
+      <h2>My final note</h2>
+      <p>
+        You made it!!!! I know i have papers today baba aur me subhe wish nahi karponga so this is my valentine's day gift to you, i hope you like it.
+      </p>
+      <p class="signature">— Kappa 💖</p>
+    </section>
+
+    <section class="recap" data-reveal aria-label="Week recap">
+      <h2>This week, saved</h2>
+      <div class="recap-grid" id="recapGrid"></div>
+      <p class="tiny-note" id="recapLine"></p>
+    </section>
+
+    <div class="actions">
+      <button class="action-btn secondary" id="backBtn" type="button">Back to dashboard</button>
+    </div>
+  </main>
+</body>
+</html>

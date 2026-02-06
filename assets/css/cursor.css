@@ -1,0 +1,39 @@
+/* =========================
+   CURSOR + HEART TRAIL
+   ========================= */
+
+@media (pointer: fine) {
+  .heart-trail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+    pointer-events: none;
+    z-index: 9998;
+    font-size: 14px;
+    opacity: 0;
+    animation: heartTrailFloat 900ms ease-out forwards;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
+  }
+
+  @keyframes heartTrailFloat {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(0.9);
+    }
+    10% {
+      opacity: 0.95;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% - 40px)) rotate(var(--rot, 0deg)) scale(1.25);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart-trail {
+    display: none !important;
+  }
+}

@@ -1,0 +1,148 @@
+/* ================================
+   TRANSITION OVERLAY (GLOBAL)
+   ================================ */
+
+#transition-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ================================
+   FADE TRANSITION
+   ================================ */
+
+.fade-overlay {
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.fade-overlay.active {
+  opacity: 1;
+}
+
+/* ================================
+   OVERLAY FADE-IN (CURTAINS)
+   ================================ */
+
+.balloon-overlay,
+.hearts-curtain-overlay {
+  opacity: 0;
+  animation: transitionOverlayIn 0.35s ease forwards;
+}
+
+@keyframes transitionOverlayIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ================================
+   BALLOON TRANSITION
+   ================================ */
+
+.balloon-overlay {
+  background: linear-gradient(to top, #ffc8dd, #ffafcc, #fcd5ce);
+}
+
+.balloon {
+  position: absolute;
+  bottom: -20%;
+  border-radius: 999px;
+  opacity: 0.95;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+  animation: balloonFloatUp 2.2s ease-in forwards;
+}
+
+/* balloon string */
+.balloon::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateX(-50%);
+}
+
+@keyframes balloonFloatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-130vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   HEART CURTAIN TRANSITION
+   ================================ */
+
+.hearts-curtain-overlay {
+  background: radial-gradient(circle at 30% 20%, #fff 0%, #ffe5ec 30%, #ffc8dd 65%, #ffafcc 100%);
+}
+
+.css-heart {
+  position: absolute;
+  width: var(--heart-size, 16px);
+  height: var(--heart-size, 16px);
+  background: #ff4d6d;
+  transform: rotate(-45deg);
+  animation: heartCurtainFloatUp 2.6s ease-in forwards;
+  z-index: 9999;
+}
+
+.css-heart::before,
+.css-heart::after {
+  content: "";
+  position: absolute;
+  width: var(--heart-size, 16px);
+  height: var(--heart-size, 16px);
+  background: #ff4d6d;
+  border-radius: 50%;
+}
+
+.css-heart::before {
+  top: calc(-1 * var(--heart-half, 8px));
+  left: 0;
+}
+
+.css-heart::after {
+  left: var(--heart-half, 8px);
+  top: 0;
+}
+
+@keyframes heartCurtainFloatUp {
+  0% {
+    transform: translateY(0) rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-140vh) rotate(-45deg) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .balloon,
+  .css-heart {
+    animation: none !important;
+  }
+
+  .balloon-overlay,
+  .hearts-curtain-overlay {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+

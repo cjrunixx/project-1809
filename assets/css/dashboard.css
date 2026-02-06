@@ -1,0 +1,250 @@
+/* =========================
+   DASHBOARD (VALENTINE WEEK)
+   ========================= */
+
+.dashboard-page {
+  background: linear-gradient(135deg, #ffafcc, #f8cdda);
+}
+
+.dash-shell {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+.dash-hero {
+  text-align: center;
+  margin-bottom: 26px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dash-hero.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dash-hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4.8vw, 44px);
+  line-height: 1.1;
+  color: #5e548e;
+}
+
+.dash-progress {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: rgba(61, 44, 69, 0.75);
+  min-height: 18px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.day-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  padding: 16px 16px 14px;
+  min-height: 170px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+.day-card:focus-visible {
+  outline: 3px solid rgba(255, 77, 109, 0.45);
+  outline-offset: 2px;
+}
+
+.day-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.day-emoji {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 77, 109, 0.12);
+  font-size: 20px;
+}
+
+.day-status {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.day-card h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #5e548e;
+}
+
+.day-date {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: rgba(61, 44, 69, 0.7);
+}
+
+.day-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(61, 44, 69, 0.78);
+}
+
+.day-lockline {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: rgba(61, 44, 69, 0.6);
+}
+
+.day-card.is-locked {
+  filter: grayscale(0.06) saturate(0.9);
+}
+
+.day-card.is-locked:hover {
+  transform: translateY(0);
+}
+
+.day-card.is-locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.08));
+  pointer-events: none;
+}
+
+.day-card.is-complete .day-emoji {
+  background: rgba(46, 196, 182, 0.16);
+}
+
+.dash-final {
+  margin-top: 18px;
+}
+
+.final-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 16px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+}
+
+.final-left h2 {
+  margin: 0 0 6px;
+  color: #5e548e;
+  font-size: 18px;
+}
+
+.final-left p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(61, 44, 69, 0.75);
+}
+
+.final-status {
+  font-size: 20px;
+  opacity: 0.95;
+}
+
+.dash-dev {
+  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(61, 44, 69, 0.25);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid rgba(61, 44, 69, 0.25);
+  color: rgba(61, 44, 69, 0.9);
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.dash-footer {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.text-link {
+  color: rgba(61, 44, 69, 0.85);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(61, 44, 69, 0.35);
+}
+
+.text-link:hover {
+  border-bottom-style: solid;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  background: rgba(10, 10, 10, 0.86);
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  width: min(520px, calc(100% - 28px));
+  text-align: center;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 860px) {
+  .dash-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .final-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
