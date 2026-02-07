@@ -18,10 +18,12 @@
     "heheh... krloge aap mountabu"
   ];
 
-  button.addEventListener("click", checkPassword);
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") checkPassword();
-  });
+  if (button) button.addEventListener("click", checkPassword);
+  if (input) {
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkPassword();
+    });
+  }
 
   function checkPassword() {
     const entered = input.value.trim();
@@ -34,7 +36,15 @@
 
     if (ok) {
       hintText.textContent = "I LOVE YOU ❤️";
-      utils?.updateProgress?.({ unlockedAt: Date.now(), year: utils.getSiteYear?.() });
+      if (utils && typeof utils.updateProgress === "function") {
+        try {
+          const siteYear = typeof utils.getSiteYear === "function" ? utils.getSiteYear() : new Date().getFullYear();
+          utils.updateProgress({ unlockedAt: Date.now(), year: siteYear });
+        } catch {
+          // Storage can be unavailable in some mobile/private browsing modes.
+          // Keep the flow working even if progress can't be persisted.
+        }
+      }
       playTransition("fade", "proposal.html");
     } else {
       attempts++;

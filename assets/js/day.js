@@ -43,25 +43,30 @@
   const backBtn = document.getElementById("backBtn");
 
   function openNote() {
-    note?.classList.add("is-open");
-    noteCover?.setAttribute("aria-expanded", "true");
+    if (note) note.classList.add("is-open");
+    if (noteCover) noteCover.setAttribute("aria-expanded", "true");
   }
 
-  noteCover?.addEventListener("click", openNote);
-  noteCover?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openNote();
-    }
-  });
+  if (noteCover) {
+    noteCover.addEventListener("click", openNote);
+    noteCover.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openNote();
+      }
+    });
+  }
 
-  completeBtn?.addEventListener("click", () => {
-    utils.markDayCompleted(dayKey);
-    playTransition("fade", "../dashboard.html");
-  });
+  if (completeBtn) {
+    completeBtn.addEventListener("click", () => {
+      utils.markDayCompleted(dayKey);
+      playTransition("fade", "../dashboard.html");
+    });
+  }
 
-  backBtn?.addEventListener("click", () => {
-    playTransition("fade", "../dashboard.html");
-  });
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      playTransition("fade", "../dashboard.html");
+    });
+  }
 })();
-

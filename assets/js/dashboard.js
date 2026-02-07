@@ -42,18 +42,23 @@
   const devPanel = document.getElementById("devPanel");
   const resetBtn = document.getElementById("resetBtn");
 
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    },
-    { threshold: 0.12 }
-  );
+  const revealEls = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 }
+    );
 
-  document.querySelectorAll("[data-reveal]").forEach((el) => revealObserver.observe(el));
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
 
   function showToast(message) {
     if (!toast) return;
@@ -85,7 +90,7 @@
   function buildDayCard(day) {
     const unlockDate = utils.makeLocalDate(year, day.monthIndex, day.day);
     const unlocked = isUnlocked(unlockDate);
-    const complete = Boolean(progress.completedDays?.[day.key]);
+    const complete = Boolean((progress.completedDays || {})[day.key]);
 
     const card = document.createElement("a");
     card.className = "day-card";
@@ -173,10 +178,20 @@
     }
   }
 
-  resetBtn?.addEventListener("click", () => {
-    localStorage.removeItem(utils.PROGRESS_KEY);
-    window.location.reload();
-  });
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      if (utils && typeof utils.clearProgress === "function") {
+        utils.clearProgress();
+      } else {
+        try {
+          localStorage.removeItem(utils.PROGRESS_KEY);
+        } catch {
+          // ignore
+        }
+      }
+      window.location.reload();
+    });
+  }
 
   render();
 })();

@@ -8,7 +8,8 @@
   const message = document.getElementById("noMessage");
   const utils = window.ValentineUtils;
 
-  if (!utils?.requireProgress?.(["unlockedAt"], "index.html")) return;
+  if (!utils || typeof utils.requireProgress !== "function") return;
+  if (!utils.requireProgress(["unlockedAt"], "index.html")) return;
 
   const playfulMessages = [
     "Nice try hahahaha 😌",
@@ -21,7 +22,13 @@
 
   // YES → Balloon + heart transition
   yesBtn.addEventListener("click", () => {
-    utils?.updateProgress?.({ saidYesAt: Date.now() });
+    if (utils && typeof utils.updateProgress === "function") {
+      try {
+        utils.updateProgress({ saidYesAt: Date.now() });
+      } catch {
+        // Ignore storage issues; keep navigation working.
+      }
+    }
     playTransition("hearts", "timeline.html");
   });
 

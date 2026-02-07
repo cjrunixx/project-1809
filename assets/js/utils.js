@@ -5,6 +5,79 @@
 (() => {
   const PROGRESS_KEY = "valentine_progress_v1";
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
+  const WINDOW_NAME_PREFIX = `${PROGRESS_KEY}:`;
+
+  const CAN_USE_LOCAL_STORAGE = (() => {
+    try {
+      if (typeof window === "undefined" || !window.localStorage) return false;
+      const testKey = "__valentine_storage_test__";
+      window.localStorage.setItem(testKey, "1");
+      window.localStorage.removeItem(testKey);
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
+  function readStoredProgressRaw() {
+    if (CAN_USE_LOCAL_STORAGE) {
+      try {
+        return window.localStorage.getItem(PROGRESS_KEY);
+      } catch {
+        // fall through to window.name
+      }
+    }
+
+    try {
+      if (typeof window !== "undefined" && typeof window.name === "string" && window.name.startsWith(WINDOW_NAME_PREFIX)) {
+        return decodeURIComponent(window.name.slice(WINDOW_NAME_PREFIX.length));
+      }
+    } catch {
+      // ignore
+    }
+
+    return null;
+  }
+
+  function writeStoredProgressRaw(raw) {
+    if (CAN_USE_LOCAL_STORAGE) {
+      try {
+        window.localStorage.setItem(PROGRESS_KEY, raw);
+        return true;
+      } catch {
+        // fall through to window.name
+      }
+    }
+
+    try {
+      if (typeof window !== "undefined") {
+        window.name = WINDOW_NAME_PREFIX + encodeURIComponent(raw);
+        return true;
+      }
+    } catch {
+      // ignore
+    }
+
+    return false;
+  }
+
+  function clearStoredProgress() {
+    if (CAN_USE_LOCAL_STORAGE) {
+      try {
+        window.localStorage.removeItem(PROGRESS_KEY);
+      } catch {
+        // ignore
+      }
+    }
+
+    try {
+      if (typeof window !== "undefined" && typeof window.name === "string" && window.name.startsWith(WINDOW_NAME_PREFIX)) {
+        window.name = "";
+      }
+    } catch {
+      // ignore
+    }
+  }
 
   function safeJsonParse(value) {
     if (!value) return null;
@@ -46,7 +119,7 @@
   }
 
   function getProgress() {
-    const stored = safeJsonParse(localStorage.getItem(PROGRESS_KEY));
+    const stored = safeJsonParse(readStoredProgressRaw());
     const base = defaultProgress();
 
     if (!isPlainObject(stored)) return base;
@@ -66,7 +139,7 @@
   }
 
   function setProgress(progress) {
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+    writeStoredProgressRaw(JSON.stringify(progress));
     return progress;
   }
 
@@ -142,6 +215,7 @@
     getProgress,
     setProgress,
     updateProgress,
+    clearProgress: clearStoredProgress,
     isDebug,
     getSiteYear,
     makeLocalDate,

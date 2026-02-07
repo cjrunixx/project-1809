@@ -6,21 +6,27 @@
   const utils = window.ValentineUtils;
 
   // Gentle gating: this page makes sense after "YES".
-  if (!utils?.requireProgress?.(["saidYesAt"], "proposal.html")) return;
+  if (!utils || typeof utils.requireProgress !== "function") return;
+  if (!utils.requireProgress(["saidYesAt"], "proposal.html")) return;
 
   const revealEls = document.querySelectorAll("[data-reveal]");
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    },
-    { threshold: 0.12 }
-  );
 
-  revealEls.forEach((el) => revealObserver.observe(el));
+  if (!("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
 
   function attachPhotoReveal(media) {
     const src = media.getAttribute("data-photo-src");
@@ -102,8 +108,16 @@
   document.querySelectorAll("[data-video-src]").forEach(attachVideoReveal);
 
   const toDashboardBtn = document.getElementById("toDashboardBtn");
-  toDashboardBtn?.addEventListener("click", () => {
-    utils?.updateProgress?.({ timelineDoneAt: Date.now() });
-    playTransition("hearts", "dashboard.html");
-  });
+  if (toDashboardBtn) {
+    toDashboardBtn.addEventListener("click", () => {
+      if (utils && typeof utils.updateProgress === "function") {
+        try {
+          utils.updateProgress({ timelineDoneAt: Date.now() });
+        } catch {
+          // Ignore storage issues; keep navigation working.
+        }
+      }
+      playTransition("hearts", "dashboard.html");
+    });
+  }
 })();

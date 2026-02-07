@@ -40,21 +40,27 @@
   }
 
   const revealEls = document.querySelectorAll("[data-reveal]");
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    },
-    { threshold: 0.12 }
-  );
-  revealEls.forEach((el) => revealObserver.observe(el));
+  if (!("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
 
-  backBtn?.addEventListener("click", () => {
-    playTransition("fade", "dashboard.html");
-  });
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      playTransition("fade", "dashboard.html");
+    });
+  }
 
   const recapGrid = document.getElementById("recapGrid");
   const recapLine = document.getElementById("recapLine");
@@ -97,4 +103,3 @@
         : `Saved: ${completedCount}/7 — and every single one means something to me.`;
   }
 })();
-
